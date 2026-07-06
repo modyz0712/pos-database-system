@@ -110,14 +110,6 @@ pos-database-system/
 
 4. Review the data dictionary and sample records under `docs/`.
 
-## Academic Context
-
-- Course: UCCD2303 Database Technology / UCCD2203 Database Systems
-- Trimester: February 2025
-- Group: G36
-- Group members: Chin Zheng Quan, Koo Ian Hong, Lai Keen Seng, Lim Yi Xiang
-- Koo Ian Hong contribution from report: scope of work, data dictionary, individual SQL/PLSQL tasks
-
 ## License
 
 This repository is released under the MIT License. See [LICENSE](LICENSE) for details.
