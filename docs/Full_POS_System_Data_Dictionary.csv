@@ -1,0 +1,72 @@
+Table Name,Attribute,Data Type,Size,Constraints,Description
+Customer,CustomerID,NUMBER,6,PK,Unique customer ID
+Customer,Name,VARCHAR2,100,NOT NULL,Full name of the customer
+Customer,PhoneNo,VARCHAR2,15,,Contact number
+Customer,Email,VARCHAR2,50,UNIQUE,Email address
+Customer,Member,CHAR,1,CHECK (Y/N),Loyalty member status
+Employee,EmployeeID,NUMBER,6,PK,Unique employee ID
+Employee,Name,VARCHAR2,100,NOT NULL,Employee name
+Employee,Working_Slot,VARCHAR2,20,,Working shift/slot
+Employee,ExpDate,DATE,-,,Employment expiry date
+Employee,Promotion_Type,VARCHAR2,30,,Employee role/position
+Menu,MenuID,NUMBER,4,PK,Unique menu ID
+Menu,MenuName,VARCHAR2,50,NOT NULL,Name of the menu
+Menu,StartTime,DATE,-,NOT NULL,Start time of menu
+Menu,EndTime,DATE,-,NOT NULL,End time of menu
+Menu_Item,MenuItemID,NUMBER,5,PK,Unique menu item ID
+Menu_Item,ItemName,VARCHAR2,100,NOT NULL,Name of menu item
+Menu_Item,UnitPrice,NUMBER,"5,2",NOT NULL,Unit price of item
+Menu_Item_Detail,MenuID,NUMBER,4,"PK, FK → Menu",Linked menu ID
+Menu_Item_Detail,MenuItemID,NUMBER,5,"PK, FK → Menu_Item",Linked menu item ID
+Menu_Item_Detail,AddedDate,DATE,-,,Date item was added to menu
+Service,ServiceID,NUMBER,6,PK,Unique service ID
+Service,Service_Type,VARCHAR2,10,"CHECK ('Dine-in','Delivery')",Type of service
+Table_Service,ServiceID,NUMBER,6,"PK, FK → Service",Links to service record
+Table_Service,Table_No,NUMBER,3,NOT NULL,Table number for dine-in
+Delivery,ServiceID,NUMBER,6,"PK, FK → Service",Links to service record
+Delivery,Delivery_Fee,NUMBER,"5,2",,Delivery fee
+Delivery,Address,VARCHAR2,200,NOT NULL,Delivery address
+Orders,OrderID,NUMBER,8,PK,Unique order ID
+Orders,OrderDate,DATE,-,NOT NULL,Date and time of order
+Orders,Status,VARCHAR2,20,CHECK,Order status
+Orders,TotalAmount,NUMBER,"8,2",NOT NULL,Total before discount
+Orders,DiscountAmount,NUMBER,"8,2",,Discount applied
+Orders,FinalAmount,NUMBER,"8,2",NOT NULL,Total after discount
+Orders,EmployeeID,NUMBER,6,FK → Employee,Handled by employee
+Orders,ServiceID,NUMBER,6,FK → Service,Related service
+Orders,CustomerID,NUMBER,6,FK → Customer,Customer who placed order
+Order_Item,OrderID,NUMBER,8,"PK, FK → Orders",Linked order
+Order_Item,MenuItemID,NUMBER,5,"PK, FK → Menu_Item",Linked menu item
+Order_Item,Quantity,NUMBER,5,NOT NULL,Quantity ordered
+Order_Item,Subtotal,NUMBER,"8,2",NOT NULL,Subtotal amount
+Order_Item,Note,VARCHAR2,200,,Special request or comment
+Promotion,PromotionID,NUMBER,5,PK,Promotion ID
+Promotion,StartDate,DATE,-,NOT NULL,Start of promotion
+Promotion,ExpDate,DATE,-,NOT NULL,End of promotion
+Promotion,Promotion_Type,VARCHAR2,10,CHECK,voucher or reward
+Voucher,PromotionID,NUMBER,5,"PK, FK → Promotion",Link to promotion
+Voucher,Voucher_Code,VARCHAR2,20,UNIQUE,Code used for voucher
+Voucher,Discount_Value,NUMBER,"5,2",NOT NULL,Discount amount
+Reward,PromotionID,NUMBER,5,"PK, FK → Promotion",Link to promotion
+Reward,Free_Item,NUMBER,5,FK → Menu_Item,Free menu item ID
+Promotion_Used,PromotionID,NUMBER,5,"PK, FK → Promotion",Used promotion ID
+Promotion_Used,OrderID,NUMBER,8,"PK, FK → Orders",Order that used promo
+Promotion_Used,Redeem_Date,DATE,-,NOT NULL,Date of redemption
+Payment,PaymentID,NUMBER,8,PK,Payment transaction ID
+Payment,PaymentAmount,NUMBER,"8,2",NOT NULL,Amount paid
+Payment,PaymentDate,DATE,-,NOT NULL,Date of payment
+Payment,PaymentMethod,VARCHAR2,20,CHECK,Payment method
+Payment,OrderID,NUMBER,8,FK → Orders,Related order
+Receipt,ReceiptID,NUMBER,8,PK,Receipt ID
+Receipt,ReceiptDate,DATE,-,NOT NULL,Date of receipt
+Receipt,ReceiptDetails,VARCHAR2,500,,Details of transaction
+Receipt,PaymentID,NUMBER,8,FK → Payment,Related payment
+Feedback,FeedbackID,NUMBER,6,PK,Unique feedback ID
+Feedback,Rating,NUMBER,2,CHECK 1–5,Customer rating (1–5)
+Feedback,Comment,VARCHAR2,500,,Customer comment
+Feedback,CustomerID,NUMBER,6,FK → Customer,Feedback owner
+Transaction_History,TH_ID,NUMBER,8,PK,Transaction history ID
+Transaction_History,Timestamp,DATE,-,NOT NULL,Time of transaction
+Transaction_History,Transaction_Status,VARCHAR2,20,CHECK,Status of transaction
+Transaction_History,CustomerID,NUMBER,6,FK → Customer,Customer involved
+Transaction_History,PaymentID,NUMBER,8,FK → Payment,Linked payment
