@@ -64,7 +64,7 @@ The design focuses on:
 
 ## My Individual SQL Work
 
-The report identifies **Koo Ian Hong** as contributing to the scope of work and data dictionary. The individual SQL file `sql/G036_KooIanHong.sql` also includes:
+The report identifies **Koo Ian Hong** as contributing to the scope of work and data dictionary. The individual SQL file `sql/Promotion_Transaction.sql` also includes:
 
 - Query to list active voucher promotions.
 - Query to list promotions used by each customer.
@@ -79,10 +79,10 @@ The report identifies **Koo Ian Hong** as contributing to the scope of work and 
 pos-database-system/
 |-- sql/
 |   |-- G036.sql
-|   |-- G036_KooIanHong.sql
-|   |-- G036_ChinZhengQuan.sql
-|   |-- G036_LaiKeenSeng.sql
-|   `-- G036_LimYiXiang.sql
+|   |-- Promotion_Transaction.sql
+|   |-- Employee_Menu.sql
+|   |-- Payment_Receipt_Service.sql
+|   `-- Customer_Membership_Feedback.sql
 |-- docs/
 |   |-- Full_POS_System_Data_Dictionary.csv
 |   |-- POS_All_Tables_Records.xlsx
@@ -104,7 +104,7 @@ pos-database-system/
 3. Run individual SQL/PLSQL demonstration files if needed:
 
    ```sql
-   @sql/G036_KooIanHong.sql
+   @sql/Promotion_Transaction.sql
    ```
 
 4. Review the data dictionary and sample records under `docs/`.

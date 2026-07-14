@@ -1,5 +1,5 @@
 /*
-Format: G036_KooIanHong.sql
+Format: Promotion_Transaction.sql
 
 INDIVIDUAL ASSIGNMENT SUBMISSION
 

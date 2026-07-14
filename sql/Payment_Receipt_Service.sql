@@ -1,5 +1,5 @@
 /*
-Format: G036_LaiKeenSeng.sql
+Format: Payment_Receipt_Service.sql
 
 INDIVIDUAL ASSIGNMENT SUBMISSION
 

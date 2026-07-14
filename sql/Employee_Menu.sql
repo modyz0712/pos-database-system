@@ -1,5 +1,5 @@
 /*
-Format: G036_ChinZhengQuan.sql
+Format: Employee_Menu.sql
 
 INDIVIDUAL ASSIGNMENT SUBMISSION
 

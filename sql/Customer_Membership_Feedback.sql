@@ -1,5 +1,5 @@
 /*
-Format: G036_LimYiXiang.sql
+Format: Customer_Membership_Feedback.sql
 
 INDIVIDUAL ASSIGNMENT SUBMISSION
 
