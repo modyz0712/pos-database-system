@@ -62,16 +62,16 @@ The design focuses on:
 - Menu item customizations add extra price on top of the base item price.
 - Payments are recorded into transaction history immediately after payment completion.
 
-## My Individual SQL Work
+## Individual SQL Work
 
-The report identifies **Koo Ian Hong** as contributing to the scope of work and data dictionary. The individual SQL file `sql/Promotion_Transaction.sql` also includes:
+The project includes one consolidated schema script and four category-based SQL/PLSQL demonstration files. Each individual file focuses on a different functional area of the POS database:
 
-- Query to list active voucher promotions.
-- Query to list promotions used by each customer.
-- Stored procedure to insert promotion usage records.
-- Stored procedure to delete a transaction by transaction-history ID.
-- Function to count promotions by promotion type.
-- Function to retrieve the latest transaction date for a customer.
+| SQL file | Focus area | Main work demonstrated |
+|---|---|---|
+| `sql/Promotion_Transaction.sql` | Promotions and transaction history | Voucher promotion queries, promotion-usage insertion, transaction deletion, promotion counting, and latest transaction date lookup |
+| `sql/Employee_Menu.sql` | Employee and menu management | Employee/menu queries, employee and menu update procedures, item price lookup, and customization price calculation |
+| `sql/Payment_Receipt_Service.sql` | Payment, receipt, and service records | Employee-service and customer-service queries, payment/receipt update procedures, delivery-fee total, and successful transaction count |
+| `sql/Customer_Membership_Feedback.sql` | Customer, membership, feedback, and receipt support | Feedback and membership queries, customer/membership update procedures, receipt content generation, and average rating calculation |
 
 ## Repository Structure
 
