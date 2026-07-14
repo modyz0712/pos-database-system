@@ -22,7 +22,6 @@ SQL and PL/SQL database design for **The Foodie**, a fast-food POS and kiosk sys
 - [My Individual SQL Work](#my-individual-sql-work)
 - [Repository Structure](#repository-structure)
 - [How to Run](#how-to-run)
-- [Academic Context](#academic-context)
 - [License](#license)
 
 ## About
