@@ -169,6 +169,56 @@ erDiagram
 | `Payment_Receipt_Service.sql` | Employee and customer service views | Update payments; update receipts | Sum delivery fees; count successful transactions |
 | `Customer_Membership_Feedback.sql` | Ratings, memberships, and customer payment history | Update customers; update memberships | Generate receipt text; calculate average rating |
 
+## Transaction and Data-Integrity Flow
+
+1. `Menu` and `Customization` define base prices and optional charges.
+2. `Orders` connects a customer, employee, and service mode. `Table_Service` and
+   `Delivery` specialize the shared service identifier for dine-in or delivery.
+3. `OrderItem` records menu quantities and subtotals for an order. Its composite
+   key prevents the same menu identifier from appearing twice in one order.
+4. `Payment` is unique per order, `Receipt` is unique per payment, and
+   `Transaction_History` records the payment result for a customer.
+5. `Promotion_Used` links an order with a voucher or reward and records when it
+   was redeemed. The promotion module can insert usage, count promotion types,
+   and retrieve a customer's latest transaction date.
+
+### SQL and PL/SQL decisions
+
+- Primary, unique, check, and foreign-key constraints reject invalid states at
+  the database boundary rather than relying only on an application interface.
+- Shared parent tables with specialized child tables reduce repeated service and
+  promotion fields while preserving type-specific data.
+- Procedures perform named updates or transaction operations; functions return
+  reusable values for queries and reports.
+- `%TYPE` parameters follow the referenced column type, reducing mismatch risk
+  when a column definition changes.
+- The scripts use explicit `COMMIT` statements for demonstrations. In an
+  application, transaction ownership and rollback policy should normally remain
+  with the calling service.
+- `OrderItem` and `Promotion_Used` have logical relationships that are not
+  declared as foreign keys in `G036.sql`; adding those constraints is a clear
+  production improvement.
+
+## Technical Checkpoints
+
+| Topic | Source checkpoint |
+|---|---|
+| Complete schema, constraints, and seed data | `sql/G036.sql` |
+| Promotion joins and active-voucher query | `sql/Promotion_Transaction.sql` queries 1-2 |
+| Promotion insertion and transaction deletion | `Insert_Promotion_Usage`, `Delete_Transaction` |
+| Optional filter and aggregate logic | `Count_Promotions` |
+| Customer transaction lookup | `get_latest_transaction_date` |
+| Other team database modules | `sql/Employee_Menu.sql`, `sql/Payment_Receipt_Service.sql`, `sql/Customer_Membership_Feedback.sql` |
+
+## Project Context
+
+This is a Database Technology group project. The README explains the complete
+restaurant POS data layer so its relationships and workflows are understandable.
+Ian Hong's individual SQL contribution is `Promotion_Transaction.sql`: two
+queries, two procedures, and two functions covering promotions and transaction
+history. The remaining category modules are included as team work and are not
+presented as his individual implementation.
+
 ## 🛠️ Technology
 
 | Layer | Technology |
